@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<taskDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-descriptor"
+                groupId="cz.cuni.mff.d3s.been" bpkId="task-test-scala" version="1.0.0-SNAPSHOT"
+                name="task-test-scala" type="task">
+
+	<java>
+		<mainClass>cz.cuni.mff.d3s.been.ScalaTask</mainClass>
+	</java>
+
+</taskDescriptor>

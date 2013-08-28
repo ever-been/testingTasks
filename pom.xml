@@ -65,5 +65,6 @@
 		<module>task-test</module>
 		<module>task-sync-test</module>
 		<module>task-sync-test2</module>
+		<module>task-test-scala</module>
 	</modules>
 </project>
