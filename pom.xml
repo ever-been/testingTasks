@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+		xmlns="http://maven.apache.org/POM/4.0.0"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cz.cuni.mff.d3s.been</groupId>
+	<artifactId>testing-tasks</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<!-- dependencies -->
+		<been.version>3.0.0-SNAPSHOT</been.version>
+		<bpk-maven-plugin.version>1.0.0-SNAPSHOT</bpk-maven-plugin.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+		<!-- plugins -->
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
+		<versions-maven-plugin.version>2.0</versions-maven-plugin.version>
+
+		<!-- SOURCE LEVEL CONTROL -->
+		<java-source.version>1.7</java-source.version>
+		<java-target.version>1.7</java-target.version>
+
+		<logback.version>1.0.12</logback.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+		<!-- ENCODING -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java-source.version}</source>
+					<target>${java-target.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions-maven-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>task-test</module>
+		<module>task-sync-test</module>
+		<module>task-sync-test2</module>
+	</modules>
+</project>

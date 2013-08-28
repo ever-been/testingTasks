@@ -1,0 +1,28 @@
+# Intellij IDEA files
+*.iml
+**/*.iml
+.idea
+**/.idea
+
+# Eclipse project files
+.classpath
+**/.classpath
+.project
+**/.project
+.settings
+**/.settings
+
+# Compiled binaries
+target
+**/target
+**/bin
+.swrepository
+**/.swrepository
+.swcache
+**/.swcache
+.HostRuntime
+**/.HostRuntime
+**/.pydevproject
+
+# junk
+.DS_Store
