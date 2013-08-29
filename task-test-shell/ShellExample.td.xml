@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<taskDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-descriptor"
+				groupId="cz.cuni.mff.d3s.been" bpkId="task-test-shell" version="1.0.0-SNAPSHOT"
+				name="shell-task" type="task">
+</taskDescriptor>
