@@ -47,6 +47,7 @@
 				</td:properties>
 
 				<td:java>
+					<td:mainClass>cz.cuni.mff.d3s.been.test.ExampleSyncTask</td:mainClass>
 					<td:javaOptions>
 						<td:javaOption>-Xmx16m</td:javaOption>
 						<td:javaOption>-Xms4m</td:javaOption>
@@ -64,6 +65,7 @@
 				</td:properties>
 
 				<td:java>
+					<td:mainClass>cz.cuni.mff.d3s.been.test.ExampleSyncTask</td:mainClass>
 					<td:javaOptions>
 						<td:javaOption>-Xmx16m</td:javaOption>
 						<td:javaOption>-Xms4m</td:javaOption>
@@ -79,6 +81,7 @@
 				</td:properties>
 
 				<td:java>
+					<td:mainClass>cz.cuni.mff.d3s.been.test.ExampleSyncTask</td:mainClass>
 					<td:javaOptions>
 						<td:javaOption>-Xmx16m</td:javaOption>
 						<td:javaOption>-Xms4m</td:javaOption>
