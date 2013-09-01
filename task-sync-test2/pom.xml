@@ -30,7 +30,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>cz.cuni.mff.d3s.been.task.ExampleSyncTask2</mainClass>
+							<mainClass>cz.cuni.mff.d3s.been.task.ExampleSyncTask</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -49,7 +49,7 @@
 				</executions>
 				<configuration>
 					<taskDescriptors>
-						<param>src/main/resources/ExampleSyncTest2.td.xml</param>
+						<param>src/main/resources/ExampleSyncTest.td.xml</param>
 					</taskDescriptors>
 				</configuration>
 			</plugin>

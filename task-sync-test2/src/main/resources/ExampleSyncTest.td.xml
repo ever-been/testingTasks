@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<taskDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-descriptor"
+				groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test2" version="1.0.0-SNAPSHOT"
+				name="server">
+
+	<java>
+		<mainClass>cz.cuni.mff.d3s.been.task.ExampleSyncTask</mainClass>
+	</java>
+
+</taskDescriptor>

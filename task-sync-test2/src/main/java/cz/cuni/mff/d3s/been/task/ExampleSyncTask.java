@@ -12,7 +12,7 @@ import cz.cuni.mff.d3s.been.taskapi.Task;
  * 
  * @author Martin Sixta
  */
-public class ExampleSyncTask2 extends Task {
+public class ExampleSyncTask extends Task {
 
 	private static final String SYNC_CHECKPOINT = "been.task.sync2.checkpoint";
 	private static final String WAIT_PROPERTY = "been.task.sync2.wait";
@@ -22,10 +22,6 @@ public class ExampleSyncTask2 extends Task {
 		String wait = System.getenv(WAIT_PROPERTY);
 		// does not handle NumberFormatException ...
 		WAIT_SECONDS = wait == null ? 5 : Integer.valueOf(wait);
-	}
-
-	public static void main(String[] args) {
-		new ExampleSyncTask2().doMain(args);
 	}
 
 	@Override

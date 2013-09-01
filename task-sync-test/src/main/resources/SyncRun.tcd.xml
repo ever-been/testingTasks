@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <taskContextDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-context-descriptor"
 					   xmlns:td="http://been.d3s.mff.cuni.cz/task-descriptor"
-					   name="sync-task-test">
+					   name="sync-test">
 
 	<properties>
 		<property name="been.task.sync.count">2</property>
@@ -40,7 +40,7 @@
 
 	<templates>
 		<template name="server">
-			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="3.0.0"
+			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="1.0.0-SNAPSHOT"
 							   exclusive="exclusive" type="task">
 				<td:properties>
 					<td:property name="been.task.sync.type">SERVER</td:property>
@@ -59,7 +59,7 @@
 		</template>
 
 		<template name="client">
-			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="3.0.0" type="task">
+			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="1.0.0-SNAPSHOT" type="task">
 				<td:properties>
 					<td:property name="been.task.sync.type">CLIENT</td:property>
 				</td:properties>
@@ -75,7 +75,7 @@
 		</template>
 
 		<template name="finalizer">
-			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="3.0.0" type="task">
+			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="1.0.0-SNAPSHOT" type="task">
 				<td:properties>
 					<td:property name="been.task.sync.type">FINALIZER</td:property>
 				</td:properties>
