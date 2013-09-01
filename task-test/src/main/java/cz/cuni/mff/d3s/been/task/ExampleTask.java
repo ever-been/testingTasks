@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
+import cz.cuni.mff.d3s.been.persistence.ResultQueryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +16,7 @@ import cz.cuni.mff.d3s.been.core.persistence.EntityID;
 import cz.cuni.mff.d3s.been.persistence.DAOException;
 import cz.cuni.mff.d3s.been.persistence.Query;
 import cz.cuni.mff.d3s.been.persistence.QueryBuilder;
-import cz.cuni.mff.d3s.been.taskapi.ResultPersister;
+import cz.cuni.mff.d3s.been.taskapi.Persister;
 import cz.cuni.mff.d3s.been.taskapi.Task;
 
 /**
@@ -24,6 +25,9 @@ import cz.cuni.mff.d3s.been.taskapi.Task;
 public class ExampleTask extends Task {
 
 	private static final Logger log = LoggerFactory.getLogger(ExampleTask.class);
+
+	private static final String MD5_GROUP = "example-md5";
+	private static final String TESTING_GROUP = "example-queryTesting";
 
 	int count = 0;
 
@@ -48,12 +52,9 @@ public class ExampleTask extends Task {
 	}
 
 	private void persistResult() {
-		final EntityID eid = new EntityID();
-		eid.setKind("result");
-		eid.setGroup("example-md5");
 
 		try {
-			final ResultPersister rp = results.createResultPersister(eid);
+			final Persister rp = results.createResultPersister(MD5_GROUP);
 			ExampleResult r = results.createResult(ExampleResult.class);
 			r.count = count;
 			rp.persist(r);
@@ -64,13 +65,10 @@ public class ExampleTask extends Task {
 	}
 
 	private int pickupResult() {
-		final EntityID eid = new EntityID();
-		eid.setKind("result");
-		eid.setGroup("example-md5");
 
 		try {
 			final Collection<ExampleResult> myResults = results.query(
-					new QueryBuilder().on(eid).with("taskId", getId()).fetch(),
+					new ResultQueryBuilder().on(MD5_GROUP).with("taskId", getId()).fetch(),
 					ExampleResult.class);
 			log.info("Picked up result {}", myResults);
 			return myResults.size();
@@ -81,9 +79,6 @@ public class ExampleTask extends Task {
 	}
 
 	private void tryAllKindsOfQueries() {
-		final EntityID eid = new EntityID();
-		eid.setKind("result");
-		eid.setGroup("example-queryTesting");
 
 		ExampleTestableResult result1;
 		ExampleTestableResult result2;
@@ -102,7 +97,7 @@ public class ExampleTask extends Task {
 		}
 
 		try {
-			final ResultPersister rp = results.createResultPersister(eid);
+			final Persister rp = results.createResultPersister(TESTING_GROUP);
 			rp.persist(result1);
 			rp.persist(result2);
 			rp.persist(result3);
@@ -118,9 +113,9 @@ public class ExampleTask extends Task {
 			throw new AssertionError("Persist wait interrupted", e);
 		}
 
-		final Query regexQuery = new QueryBuilder().on(eid).with("taskId", getId()).with("testString").like(".*3").fetch();
-		final Query intervalQueryInt = new QueryBuilder().with("taskId", getId()).on(eid).with("testInt").between(2, 3).fetch();
-		final Query neqQuery = new QueryBuilder().on(eid).with("taskId", getId()).with("testInt").differentFrom(2).fetch();
+		final Query regexQuery = new ResultQueryBuilder().on(TESTING_GROUP).with("taskId", getId()).with("testString").like(".*3").fetch();
+		final Query intervalQueryInt = new ResultQueryBuilder().on(TESTING_GROUP).with("taskId", getId()).with("testInt").between(2, 3).fetch();
+		final Query neqQuery = new ResultQueryBuilder().on(TESTING_GROUP).with("taskId", getId()).with("testInt").differentFrom(2).fetch();
 
 		try {
 			final Collection<ExampleTestableResult> regexResults = results.query(regexQuery, ExampleTestableResult.class);
