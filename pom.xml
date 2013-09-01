@@ -67,5 +67,6 @@
 		<module>task-sync-test2</module>
 		<module>task-test-scala</module>
 		<module>task-test-shell</module>
+		<module>task-example-results</module>
 	</modules>
 </project>
