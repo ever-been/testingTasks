@@ -166,7 +166,7 @@ public class ExampleTask extends Task {
 		System.out.println("STANDARD OUTPUT (System.out.println...) MESSAGE");
 		System.err.println("ERROR OUTPUT (System.err.println...) MESSAGE");
 		log.info("ExampleTask just started.");
-		log.info("I am task from iteration {}", this.getProperty("iteration"));
+		log.info("I am task from iteration {}", this.getTaskProperty("iteration"));
 		performHeavyCalculations();
 		log.info("Performance testing finished.");
 		persistResult();

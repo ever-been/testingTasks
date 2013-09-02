@@ -10,7 +10,6 @@
 
 	<task>
 		<name>server</name>
-
 		<descriptor>
 			<fromTemplate>server</fromTemplate>
 		</descriptor>
@@ -44,6 +43,7 @@
 							   exclusive="exclusive" type="task">
 				<td:properties>
 					<td:property name="been.task.sync.type">SERVER</td:property>
+					<td:property name="task.log.level">INFO</td:property>
 				</td:properties>
 
 				<td:java>
@@ -62,6 +62,7 @@
 			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="1.0.0-SNAPSHOT" type="task">
 				<td:properties>
 					<td:property name="been.task.sync.type">CLIENT</td:property>
+					<td:property name="task.log.level">INFO</td:property>
 				</td:properties>
 
 				<td:java>
@@ -78,6 +79,7 @@
 			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="task-sync-test" version="1.0.0-SNAPSHOT" type="task">
 				<td:properties>
 					<td:property name="been.task.sync.type">FINALIZER</td:property>
+					<td:property name="task.log.level">INFO</td:property>
 				</td:properties>
 
 				<td:java>

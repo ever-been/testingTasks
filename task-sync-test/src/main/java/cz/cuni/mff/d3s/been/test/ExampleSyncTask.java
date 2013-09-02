@@ -11,6 +11,11 @@ import cz.cuni.mff.d3s.been.taskapi.CheckpointController;
 import cz.cuni.mff.d3s.been.taskapi.Task;
 
 /**
+ * Demonstrates techniques for task synchronization using the BEEN framework.
+ * 
+ * There is a server and several clients. The clients has to wait for the server
+ * to start and the server has to wait for all clients.
+ * 
  * @author Martin Sixta
  */
 public class ExampleSyncTask extends Task {
