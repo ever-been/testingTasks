@@ -68,6 +68,8 @@
 		<module>task-test-scala</module>
 		<module>task-test-shell</module>
 		<module>task-example-results</module>
+		<module>task-example-checkpoints</module>
+		<module>task-example-helloworld</module>
 	</modules>
 
 

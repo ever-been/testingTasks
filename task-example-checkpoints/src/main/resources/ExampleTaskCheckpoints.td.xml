@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<taskDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-descriptor"
+				groupId="cz.cuni.mff.d3s.been" bpkId="task-example-checkpoints" version="1.0.0-SNAPSHOT"
+				name="example-checkpoints" >
+
+	<java>
+		<mainClass>com.example.been.ExampleTask</mainClass>
+	</java>
+
+	<properties>
+		<property name="task.log.level" description="Log level of the task">INFO</property>
+	</properties>
+
+</taskDescriptor>
