@@ -37,7 +37,9 @@ public class ExampleTask extends Task {
 
 
 		result1.setData(47);
+		result1.setName("Name47");
 		result2.setData(42);
+		result2.setName("Name42");
 
 		// persister implements AutoClosable
 		try (Persister persister = results.createResultPersister(GROUP_ID)) {
@@ -56,7 +58,7 @@ public class ExampleTask extends Task {
 		}
 
 
-		log.info("Querying results");
+		log.info("Querying all results");
 
 		// Queries are build with the ResultQueryBuilder which has fluent API
 
@@ -69,6 +71,7 @@ public class ExampleTask extends Task {
 			log.info("Result fetched {}", result.getData());
 		}
 
+		log.info("Querying results with data == 47");
 		// now lets only query results which data == 47
 		Query queryWithData = new ResultQueryBuilder().on(GROUP_ID).with("taskId", getId()).with("data", 47).fetch();
 
@@ -77,6 +80,18 @@ public class ExampleTask extends Task {
 		for (ExampleResult result: taskResults) {
 			log.info("Result fetched {} (should be 47)", result.getData());
 		}
+
+		log.info("Querying results with name == name47, but only retrieving data field");
+		// example how to query only for certain fields
+		Query queryOnlyData = new ResultQueryBuilder().on(GROUP_ID).with("taskId", getId()).with("name", "Name42").retrieving("data").fetch();
+
+
+		taskResults = results.query(queryOnlyData, ExampleResult.class);
+
+		for (ExampleResult result: taskResults) {
+			log.info("Result fetched with data field only: data {}, name {} (should be null))", result.getData(), result.getName());
+		}
+
 
 		log.info("Task exiting");
 

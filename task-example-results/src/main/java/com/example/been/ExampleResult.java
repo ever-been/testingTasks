@@ -23,6 +23,11 @@ public class ExampleResult extends Result {
 	private int data;
 
 	/**
+	 * All fields will be serialized/deserialized.
+	 */
+	private String name;
+
+	/**
 	 * Results MUST have non-parametric constructor.
 	 */
 	public ExampleResult() {
@@ -45,5 +50,13 @@ public class ExampleResult extends Result {
 	 */
 	public void setData(int data) {
 		this.data = data;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }
