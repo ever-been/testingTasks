@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<taskDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-descriptor"
+				groupId="cz.cuni.mff.d3s.been" bpkId="example-benchmark" version="1.0.0-SNAPSHOT"
+				name="example-benchmark" type="benchmark">
+
+	<java>
+		<mainClass>com.example.been.benchmark.ExampleBenchmark</mainClass>
+	</java>
+
+	<properties>
+		<property name="task.log.level" description="Log level of the ExampleBenchmark task">INFO</property>
+		<property name="clients.count" description="Number of clients to spawn per context">2</property>
+		<property name="benchmark.runs" description="Number of benchmark runs">10</property>
+		<property name="clients.messages" description="Number of messages each client will send">1000</property>
+	</properties>
+
+</taskDescriptor>
