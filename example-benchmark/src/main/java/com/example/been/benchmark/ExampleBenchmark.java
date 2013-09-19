@@ -9,7 +9,7 @@ import cz.cuni.mff.d3s.been.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.example.been.benchmark.PropertyHelper.*;
+import static com.example.been.benchmark.common.PropertyHelper.*;
 
 /**
  * @author Martin Sixta
@@ -71,6 +71,8 @@ public class ExampleBenchmark extends Benchmark {
 		// let the context know, how many clients there are
 		builder.setProperty(CLIENT_COUNT_KEY, numberOfClients.toString());
 		builder.setProperty(CLIENT_MESSAGES_KEY, messagesPerClient.toString());
+		builder.setProperty(CURRENT_RUN_KEY, run.toString());
+		builder.setProperty(LOG_LEVEL_KEY, getTaskProperty(LOG_LEVEL_KEY, "INFO"));
 
 		// add appropriate number of contexts
 		for (int i = 0; i < numberOfClients; ++i) {

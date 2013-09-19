@@ -8,9 +8,6 @@
 		<descriptor>
 			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="example-benchmark" version="1.0.0-SNAPSHOT"
 							   type="task">
-				<td:properties>
-					<td:property name="task.log.level">INFO</td:property>
-				</td:properties>
 
 				<td:java>
 					<td:mainClass>com.example.been.benchmark.server.ServerTask</td:mainClass>
@@ -29,9 +26,6 @@
 		<template name="client">
 			<td:taskDescriptor groupId="cz.cuni.mff.d3s.been" bpkId="example-benchmark" version="1.0.0-SNAPSHOT"
 							   type="task">
-				<td:properties>
-					<td:property name="task.log.level">INFO</td:property>
-				</td:properties>
 
 				<td:java>
 					<td:mainClass>com.example.been.benchmark.client.ClientTask</td:mainClass>

@@ -1,6 +1,5 @@
 package com.example.been.benchmark.server;
 
-import com.example.been.benchmark.PropertyHelper;
 import cz.cuni.mff.d3s.been.mq.MessagingException;
 import cz.cuni.mff.d3s.been.persistence.DAOException;
 import cz.cuni.mff.d3s.been.taskapi.CheckpointController;
@@ -12,6 +11,9 @@ import org.slf4j.LoggerFactory;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeoutException;
+
+import static com.example.been.benchmark.common.PropertyHelper.*;
 
 /**
  * @author Martin Sixta
@@ -23,57 +25,83 @@ public class ServerTask extends Task {
 	 */
 	private static final Logger log = LoggerFactory.getLogger(ServerTask.class);
 
+	private ZMQ.Context context = null;
+
+	ZMQ.Socket socket = null;
+
 	@Override
 	public void run(String[] args) throws TaskException, MessagingException, DAOException {
 
-		// prepare the server
-		String host;
-		try {
-			host = InetAddress.getLocalHost().getHostName();
-		} catch (UnknownHostException e) {
-			throw new TaskException("Cannot obtain Host name");
-		}
 
-		if (host == null) {
-			host = "localhost";
-		}
-
-		String address = String.format("tcp://%s", host);
-		ZMQ.Context context = ZMQ.context();
-
-		ZMQ.Socket socket = context.socket(ZMQ.REP);
-		int port = socket.bindToRandomPort(address);
-
-		address = String.format("%s:%d", address, port);
+		final String address = startServer();
 
 
 		try (CheckpointController checkpoints = CheckpointController.create()) {
 			// set count down latch, this must be done before address checkpoint!
-			checkpoints.latchSet(PropertyHelper.CONTEXT_RENDEZVOUS, PropertyHelper.getNumberOfClients());
+			checkpoints.latchSet(CONTEXT_RENDEZVOUS, getNumberOfClients());
 
 			// set checkpoint
-			checkpoints.checkPointSet(PropertyHelper.CONTEXT_CHECKPOINT_ADDRESS, address);
+			checkpoints.checkPointSet(CONTEXT_CHECKPOINT_ADDRESS, address);
 
 			// wait for all clients
-			checkpoints.latchWait(PropertyHelper.CONTEXT_RENDEZVOUS);
+			checkpoints.latchWait(CONTEXT_RENDEZVOUS, DEFAULT_TIMEOUT);
 
-			checkpoints.checkPointSet(PropertyHelper.CONTEXT_CHECKPOINT_GO, "go");
+			checkpoints.checkPointSet(CONTEXT_CHECKPOINT_GO, "go");
 
-			int totalNumberOfConnections = PropertyHelper.getTotalNumberOfConnections();
+			int totalNumberOfConnections = getTotalNumberOfConnections();
+
 			long start = System.nanoTime();
 			for (int i = 0; i < totalNumberOfConnections; ++i) {
 				String msg = socket.recvStr();
+
+				// handle server timeout
+				if (msg == null) {
+					log.error("Server timeout!");
+					break;
+				}
+
 				socket.send("OK: " + msg);
 			}
 
-			// print something
 			long end = System.nanoTime();
-			log.info("Server completed test in {} ms ", (end - start) / 1000000);
+			log.debug("Server completed test in {} ms ", (end - start) / 1000000);
 
+		} catch (TimeoutException e) {
+			throw new TaskException("Server timeout!");
 		} finally {
 			// don't forget to close the connection
 			socket.close();
 			context.term();
+		}
+
+	}
+
+	private String startServer() throws TaskException {
+
+
+		final String hostName = getHostName();
+		final String address = String.format("tcp://%s", hostName);
+
+		try {
+			context = ZMQ.context();
+
+			socket = context.socket(ZMQ.REP);
+			socket.setReceiveTimeOut(DEFAULT_TIMEOUT);
+			socket.setSendTimeOut(0); // will not wait
+			int port = socket.bindToRandomPort(address);
+
+			return String.format("tcp://%s:%d", hostName, port);
+		} catch (Exception e) {
+			throw new TaskException("Cannot start the server!");
+		}
+
+	}
+
+	private String getHostName() throws TaskException {
+		try {
+			return InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e) {
+			throw new TaskException("Cannot obtain host name!");
 		}
 
 	}

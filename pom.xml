@@ -70,6 +70,7 @@
 		<module>task-example-results</module>
 		<module>task-example-checkpoints</module>
 		<module>task-example-helloworld</module>
+		<module>example-benchmark</module>
 	</modules>
 
 
