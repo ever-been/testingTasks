@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<taskDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-descriptor"
+				groupId="cz.cuni.mff.d3s.been" bpkId="example-benchmark" version="1.0.0-SNAPSHOT"
+				name="example-evaluator" type="task">
+	<properties>
+		<property name="task.log.level">INFO</property>
+		<property name="evaluator.benchmark.id"/>
+	</properties>
+
+	<java>
+		<mainClass>com.example.been.benchmark.evaluator.EvaluatorTask</mainClass>
+	</java>
+</taskDescriptor>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <taskContextDescriptor xmlns="http://been.d3s.mff.cuni.cz/task-context-descriptor"
 					   xmlns:td="http://been.d3s.mff.cuni.cz/task-descriptor"
-					   name="sync-test">
+					   name="example-benchmark-context">
 
 	<task>
 		<name>server</name>

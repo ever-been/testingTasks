@@ -66,8 +66,8 @@ public class ClientTask extends Task {
 
 			// print something
 			long end = System.nanoTime();
-			long elapsed = (end - start) / 1000000;
-			log.debug("Test completed in {} ms", elapsed);
+			long elapsed = (end - start);
+			log.debug("Test completed in {} ms", elapsed / 1000000);
 
 			final PropertyReader propertyReader = createPropertyReader();
 			storeResult(elapsed, messages, propertyReader.getInteger(CURRENT_RUN_KEY, 0));

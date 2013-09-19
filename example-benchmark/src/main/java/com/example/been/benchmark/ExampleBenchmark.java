@@ -67,6 +67,8 @@ public class ExampleBenchmark extends Benchmark {
 		// create context from a template
 		ContextBuilder builder = ContextBuilder.createFromResource(ExampleBenchmark.class, "ContextTemplate.tcd.xml");
 
+		builder.setName(String.format("Example benchmark [run: %d]", run));
+
 
 		// let the context know, how many clients there are
 		builder.setProperty(CLIENT_COUNT_KEY, numberOfClients.toString());
