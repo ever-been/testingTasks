@@ -32,6 +32,8 @@ public class ClientTask extends Task {
 
 		ZMQ.Context context = ZMQ.context();
 		ZMQ.Socket socket = context.socket(ZMQ.REQ);
+		socket.setSendTimeOut(DEFAULT_TIMEOUT);
+		socket.setSendTimeOut(DEFAULT_TIMEOUT);
 
 		try (CheckpointController requestor = CheckpointController.create()) {
 			// get server address and port

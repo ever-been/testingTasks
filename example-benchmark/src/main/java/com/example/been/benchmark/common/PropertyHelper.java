@@ -9,7 +9,7 @@ public class PropertyHelper {
 
 	public static String BENCHMARK_RUNS_KEY = "benchmark.runs";
 
-	public static int DEFAULT_TIMEOUT = 3000;
+	public static int DEFAULT_TIMEOUT = 10000;
 
 
 	public static int getNumberOfClients() {

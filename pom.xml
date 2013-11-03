@@ -33,6 +33,26 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>cz.cuni.mff.d3s.been</groupId>
+				<artifactId>task-api</artifactId>
+				<version>${been.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cz.cuni.mff.d3s.been</groupId>
+				<artifactId>benchmark-api</artifactId>
+				<version>${been.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cz.cuni.mff.d3s.been</groupId>
+				<artifactId>bpk-maven-plugin</artifactId>
+				<version>${bpk-maven-plugin.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>

@@ -10,13 +10,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>task-example-results</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>cz.cuni.mff.d3s.been</groupId>
 			<artifactId>task-api</artifactId>
-			<version>${been.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -26,7 +24,6 @@
 			<plugin>
 				<groupId>cz.cuni.mff.d3s.been</groupId>
 				<artifactId>bpk-maven-plugin</artifactId>
-				<version>${bpk-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>

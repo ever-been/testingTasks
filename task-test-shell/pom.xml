@@ -7,17 +7,16 @@
 	<parent>
 		<groupId>cz.cuni.mff.d3s.been</groupId>
 		<artifactId>testing-tasks</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>3.0.0</version>
 	</parent>
 
 	<artifactId>task-test-shell</artifactId>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>cz.cuni.mff.d3s.been</groupId>
 				<artifactId>bpk-maven-plugin</artifactId>
-				<version>${bpk-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -28,7 +27,7 @@
 				<configuration>
 					<runtime>native</runtime>
 					<binary>test.sh</binary>
-					
+
 					<taskDescriptors>
 						<param>ShellExample.td.xml</param>
 					</taskDescriptors>

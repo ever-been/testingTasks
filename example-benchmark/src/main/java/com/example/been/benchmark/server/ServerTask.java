@@ -57,7 +57,7 @@ public class ServerTask extends Task {
 				// handle server timeout
 				if (msg == null) {
 					log.error("Server timeout!");
-					break;
+					throw new TaskException("Server timeout!");
 				}
 
 				socket.send("OK: " + msg);
